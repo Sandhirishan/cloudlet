@@ -48,19 +48,22 @@ pipeline {
                 }
             }
         }
-       stage('Stop Existing Container') {
+        stage('Stop Existing Container') {
             steps {
                 script {
-                    // Stop and remove the existing container if it is running
+                    // Stop and remove any existing container (running or stopped)
                     sh '''
-                    if [ $(docker ps -q -f name=${CONTAINER_NAME}) ]; then
-                        docker stop ${CONTAINER_NAME}
-                        docker rm ${CONTAINER_NAME}
+                    if [ $(docker ps -a -q -f name=${CONTAINER_NAME}) ]; then
+                        echo "Removing existing container: ${CONTAINER_NAME}"
+                        docker rm -f ${CONTAINER_NAME}
+                    else
+                        echo "No existing container found with name ${CONTAINER_NAME}"
                     fi
                     '''
                 }
             }
         }
+
 
         stage('Run New Container') {
             steps {
