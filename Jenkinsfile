@@ -21,7 +21,7 @@ pipeline {
                 script {
                     // Build the Docker image and pass the secret as a build argument
                     sh '''
-                    docker build \
+                    docker build --no-cache \
                         --build-arg VITE_CONVEX_URL=${VITE_CONVEX_URL} \
                         -t ${IMAGE_NAME}:${IMAGE_TAG} .
                     '''
