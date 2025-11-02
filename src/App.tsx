@@ -10,7 +10,7 @@ export default function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="sticky top-0 z-10 flex items-center justify-between p-4 border-b bg-white/80 backdrop-blur-sm">
-        <h2 className="text-xl font-semibold accent-text">Cloudlet</h2>
+        <h2 className="text-xl font-semibold accent-text">Cloudlet1</h2>
         <SignOutButton />
       </header>
       <main className="flex-1 p-8">
